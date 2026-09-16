@@ -63,20 +63,52 @@
   </div>
 
   <div class="kart">
-    <h2>Uygulamayı kurman gerekiyor</h2>
+    <h2>Davet uygulamada açılır</h2>
     <p>
-      Kurduktan sonra bu bağlantıya bir daha dokun — listeye kendiliğinden
-      katılırsın. Hesap açman, şifre belirlemen gerekmez.
+      Uygulama telefonunda kuruluysa bu sayfa kendiliğinden kapanıp listeye
+      katılmanı sağlar. Açılmadıysa aşağıdaki düğmeye dokun. Hesap açman,
+      şifre belirlemen gerekmez.
     </p>
   </div>
 
-  <a class="indir" href="https://play.google.com/store/apps/details?id=com.marketarkadasim.app">
-    Uygulamayı indir
-  </a>
+  <a class="indir" id="ac" href="#" hidden>Uygulamada aç</a>
+
+  <div class="kart" style="margin-top:22px">
+    <h2>Uygulama telefonunda yoksa</h2>
+    <p>
+      Market Arkadaşım henüz mağazada değil, <strong>kapalı testte</strong>.
+      Seni çağıran kişiden kurulum dosyasını (APK) iste; kurduktan sonra
+      bu bağlantıya bir daha dokunman yeterli.
+    </p>
+  </div>
   <p class="not">
     Listeler uçtan uca şifrelidir: yalnızca sen ve seni çağıran kişi
     okuyabilir. Davet bağlantısı 2 gün geçerlidir.
   </p>
 </main>
+
+<script>
+(function () {
+  // Uygulama kuruluysa ona devret. Yük `#` sonrasındadır ve aynen taşınır.
+  var yuk = location.hash || '';
+  if (!yuk || yuk.length < 2) return;
+
+  var yol = location.pathname.replace(/\/+$/, '').split('/').pop() || 'd';
+  var hedef = 'marketarkadasim://' + yol + yuk;
+
+  // Kullanıcı sayfaya geri dönerse (uygulama açılmadıysa) bir şey yapma.
+  // Otomatik denemeyi yalnızca bir kez, sessizce yaparız.
+  var denendi = sessionStorage.getItem('devredildi:' + yuk);
+  var dugme = document.getElementById('ac');
+  if (dugme) {
+    dugme.href = hedef;
+    dugme.hidden = false;
+  }
+  if (denendi) return;
+  try { sessionStorage.setItem('devredildi:' + yuk, '1'); } catch (e) {}
+  location.href = hedef;
+})();
+</script>
+
 </body>
 </html>

@@ -7,7 +7,8 @@
       "namespace": "android_app",
       "package_name": "com.marketarkadasim.app",
       "sha256_cert_fingerprints": [
-        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+        "1F:F9:72:D9:33:87:BA:93:5E:E1:A1:4B:0E:4A:7B:B5:5B:E1:B3:67:18:ED:79:F7:C0:31:87:2F:91:19:FB:D6"
       ]
     }
   }

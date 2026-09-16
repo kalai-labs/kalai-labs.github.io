@@ -76,15 +76,43 @@
 
   <div id="icerik"></div>
 
-  <a class="indir" href="https://play.google.com/store/apps/details?id=com.marketarkadasim.app">
-    Uygulamayı indir
-  </a>
+  <a class="indir" id="ac" href="#" hidden>Uygulamada aç</a>
+  <div class="kart" style="margin-top:22px">
+    <h2>Uygulama telefonunda yoksa</h2>
+    <p>
+      Market Arkadaşım henüz mağazada değil, <strong>kapalı testte</strong>.
+      Bu bağlantıyı sana gönderen kişiden kurulum dosyasını (APK) iste.
+    </p>
+  </div>
   <p class="not">
-    Uygulamayı kurduktan sonra bu bağlantıya bir daha dokun — liste
-    kendiliğinden telefonuna geçer. Bağlantı gönderildikten 2 gün sonra
-    geçerliliğini yitirir.
+    Bu eski biçim bir liste bağlantısı; gönderildikten 2 gün sonra
+    geçerliliğini yitirir. Yeni bağlantılar canlı ve ortaktır.
   </p>
 </main>
+
+<script>
+(function () {
+  // Uygulama kuruluysa ona devret. Yük `#` sonrasındadır ve aynen taşınır.
+  var yuk = location.hash || '';
+  if (!yuk || yuk.length < 2) return;
+
+  var yol = location.pathname.replace(/\/+$/, '').split('/').pop() || 'l';
+  var hedef = 'marketarkadasim://' + yol + yuk;
+
+  // Kullanıcı sayfaya geri dönerse (uygulama açılmadıysa) bir şey yapma.
+  // Otomatik denemeyi yalnızca bir kez, sessizce yaparız.
+  var denendi = sessionStorage.getItem('devredildi:' + yuk);
+  var dugme = document.getElementById('ac');
+  if (dugme) {
+    dugme.href = hedef;
+    dugme.hidden = false;
+  }
+  if (denendi) return;
+  try { sessionStorage.setItem('devredildi:' + yuk, '1'); } catch (e) {}
+  location.href = hedef;
+})();
+</script>
+
 
 <script>
 (function () {
