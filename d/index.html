@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Arkadaşım — liste daveti</title>
+<meta name="robots" content="noindex">
+<!--
+  Davet bağlantısı uygulama kurulu değilken buraya düşer.
+
+  Davetin `#` sonrası kısmı listenin şifre anahtarını taşır ve `#` sonrası
+  tarayıcıdan sunucuya GÖNDERİLMEZ — GitHub bu anahtarı hiçbir zaman görmez.
+  Bu sayfa da anahtara dokunmaz: ekranda gösterilmez, hiçbir yere yazılmaz.
+  Uygulama kurulduktan sonra aynı bağlantıya dokunmak yeterlidir.
+-->
+<style>
+  :root {
+    --zemin: #F9F6EF; --yuzey: #FFFFFF; --metin: #27211A; --silik: #82786A;
+    --vurgu: #1FA55A; --vurgu-derin: #127C41; --vurgu-zemin: #E2F5E9;
+    --kenar: #EBE5D8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --zemin: #151210; --yuzey: #201B16; --metin: #F5EFE8; --silik: #A2968A;
+      --vurgu: #3DBE74; --vurgu-derin: #6FDE9C; --vurgu-zemin: #15301F;
+      --kenar: #332B23;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 18px 48px;
+    background: var(--zemin); color: var(--metin);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 460px; margin: 0 auto; }
+  .baslik { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .baslik .logo { font-size: 34px; }
+  .baslik h1 { font-size: 19px; margin: 0; letter-spacing: -0.3px; }
+  .baslik p { margin: 2px 0 0; font-size: 13px; color: var(--silik); }
+  .kart {
+    background: var(--vurgu-zemin); border: 1px solid var(--kenar);
+    border-radius: 22px; padding: 18px;
+  }
+  .kart h2 { margin: 0 0 6px; font-size: 17px; color: var(--vurgu-derin); }
+  .kart p { margin: 0; font-size: 14px; }
+  .indir {
+    display: block; margin-top: 22px; padding: 16px;
+    background: var(--vurgu); color: #FFFFFF; text-align: center;
+    text-decoration: none; font-weight: 700; border-radius: 999px;
+  }
+  .not { margin-top: 18px; font-size: 12px; color: var(--silik); text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <div class="baslik">
+    <span class="logo">🛒</span>
+    <div>
+      <h1>Market Arkadaşım</h1>
+      <p>Bir alışveriş listesine çağrıldın</p>
+    </div>
+  </div>
+
+  <div class="kart">
+    <h2>Uygulamayı kurman gerekiyor</h2>
+    <p>
+      Kurduktan sonra bu bağlantıya bir daha dokun — listeye kendiliğinden
+      katılırsın. Hesap açman, şifre belirlemen gerekmez.
+    </p>
+  </div>
+
+  <a class="indir" href="https://play.google.com/store/apps/details?id=com.marketarkadasim.app">
+    Uygulamayı indir
+  </a>
+  <p class="not">
+    Listeler uçtan uca şifrelidir: yalnızca sen ve seni çağıran kişi
+    okuyabilir. Davet bağlantısı 2 gün geçerlidir.
+  </p>
+</main>
+</body>
+</html>

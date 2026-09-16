@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Arkadaşım / My Grocery Buddy — Gizlilik Politikası / Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 44rem; margin: 0 auto; padding: 2rem 1.25rem 5rem;
+         font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.5rem; border-bottom: 1px solid #8884; padding-bottom: .3rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.75rem; }
+  .meta { opacity: .7; font-size: .9rem; }
+  .lang { margin: 2rem 0 0; }
+  hr { border: none; border-top: 2px solid #8884; margin: 4rem 0; }
+  code { background: #8882; padding: .1rem .35rem; border-radius: 3px; }
+  ul { padding-left: 1.2rem; }
+</style>
+</head>
+<body>
+
+<!-- ===================== TÜRKÇE ===================== -->
+<h1>Market Arkadaşım — Gizlilik Politikası</h1>
+<p class="meta">Son güncelleme: 11 Ağustos 2026 · Uygulama paket adı: <code>com.marketarkadasim.app</code></p>
+
+<p>Bu politika, <strong>Market Arkadaşım</strong> (Play Store'da bazı ülkelerde
+<em>My Grocery Buddy</em> adıyla) uygulamasının verilerinizi nasıl işlediğini anlatır.
+Kısa cevap: <strong>yazdıklarınızı biz okuyamıyoruz.</strong></p>
+
+<h2>1. Hesap yok</h2>
+<p>Uygulama sizden <strong>ad, e-posta, telefon numarası veya şifre istemez</strong>.
+Kayıt olmazsınız, giriş yapmazsınız. Arkadaşınızla eşleşmek için yalnızca bir
+QR kod okutursunuz.</p>
+
+<h2>2. Uçtan uca şifreleme</h2>
+<p>Alışveriş listeleriniz, ürün adları, girdiğiniz tutarlar, mağaza adları, notlarınız
+ve uygulama içinde yazdığınız takma adlar <strong>telefonunuzdan çıkmadan önce
+şifrelenir</strong> (XChaCha20-Poly1305).</p>
+<ul>
+  <li>Şifreleme anahtarı <strong>yalnızca telefonlarınızda</strong> saklanır.</li>
+  <li>Anahtar, davet QR kodunun ya da davet bağlantısının içinde elden ele taşınır —
+      <strong>sunucuya hiçbir zaman yazılmaz</strong>.</li>
+  <li>Sunucuda duran her şey, açılamayan şifreli bloklardır. <strong>Uygulamanın
+      geliştiricisi dahil hiç kimse</strong> bu içeriği okuyamaz.</li>
+</ul>
+<p><strong>Kurtarma yoktur.</strong> Telefonunuzu kaybederseniz ve o alana bağlı başka
+bir cihazınız yoksa, verileriniz matematiksel olarak geri getirilemez. Bu bilinçli bir
+tasarım tercihidir.</p>
+
+<h3>Kendi gönderdiğiniz bağlantılar</h3>
+<p>Bir listeyi "gönder" dediğinizde liste, oluşturulan bağlantının <code>#</code>
+işaretinden sonraki kısmına yazılır. Tarayıcılar <code>#</code> sonrasını
+<strong>sunucuya göndermez</strong>; dolayısıyla gönderdiğiniz liste bize ya da
+bağlantının açıldığı siteyi barındıran şirkete <strong>hiçbir zaman ulaşmaz</strong>.
+Liste yalnızca sizin seçtiğiniz mesajlaşma uygulaması üzerinden karşı tarafa geçer.</p>
+<p><strong>Bu bağlantı şifreli değildir.</strong> Şifreleseydik, açacak anahtarı da aynı
+bağlantının içinde göndermek zorunda kalırdık — bu gerçek bir koruma sağlamaz, yalnızca
+öyle görünürdü. Bağlantı kimin eline geçerse listeyi görebilir; listeyi düz bir mesaj
+olarak yazmakla aynı düzeydedir. Alan anahtarını taşıyan <em>davet</em> bağlantısı
+bundan farklıdır ve yalnızca listenize almak istediğiniz kişiye gönderilmelidir.
+Gönderilen bağlantılar 2 gün sonra uygulama tarafından kabul edilmez.</p>
+
+<h2>3. Sunucuda şifresiz duran şeyler</h2>
+<p>Uygulamanın çalışabilmesi için şu teknik veriler Google Firebase Realtime Database
+(sunucu bölgesi: Avrupa Birliği, <code>europe-west1</code>) üzerinde şifresiz tutulur:</p>
+<ul>
+  <li><strong>Anonim kullanıcı kimliği (uid):</strong> Firebase'in ürettiği rastgele bir
+      numara. Adınıza, e-postanıza veya telefonunuza bağlı değildir.</li>
+  <li><strong>Davet kodu:</strong> hangi kodun hangi alana ait olduğu.</li>
+  <li><strong>Katılma zamanı</strong> ve hangi kimliğin hangi alanın üyesi olduğu bilgisi.</li>
+</ul>
+<p>Bu bilgiler kimliğinizi ortaya çıkarmaz; içerik değil, yalnızca uygulamanın
+iskeletidir.</p>
+
+<h2>4. Kamera</h2>
+<p>Kamera izni tek bir iş için istenir: <strong>davet QR kodunu okutmak</strong>.</p>
+<ul>
+  <li>Görüntü <strong>hiçbir sunucuya yüklenmez</strong> ve hiçbir yere kaydedilmez.</li>
+  <li>Galerinize erişilmez.</li>
+  <li>Fotoğraf çekilmez, saklanmaz.</li>
+</ul>
+
+<h2>5. Reklam ve analitik yok</h2>
+<p>Uygulamada <strong>reklam yoktur</strong>. Reklam kimliği (Advertising ID) okunmaz.
+Üçüncü taraf analitik, izleme veya profil çıkarma araçları <strong>kullanılmaz</strong>.
+Verileriniz kimseye satılmaz, kiralanmaz, paylaşılmaz.</p>
+
+<h2>6. Çocuklar</h2>
+<p>Uygulama 13 yaşın altındaki çocuklara yönelik değildir ve bilerek onlardan veri
+toplamaz.</p>
+
+<h2>7. Verilerinizi silmek</h2>
+<p>İki yolu var:</p>
+<ul>
+  <li><strong>Uygulamayı silin.</strong> Şifreleme anahtarı telefonunuzdan silinir ve
+      sunucuda kalan şifreli bloklar kalıcı olarak okunamaz hâle gelir.</li>
+  <li><strong>Tamamen kaldırılmasını isteyin.</strong> Aşağıdaki adrese yazın; anonim
+      kimliğinize bağlı tüm kayıtları veritabanından sileriz. Kimliğinizi doğrulamak
+      için uygulamadaki alan kodunuzu belirtmeniz yeterlidir.</li>
+</ul>
+
+<h2>8. Değişiklikler</h2>
+<p>Bu politika değişirse bu sayfa güncellenir ve yukarıdaki tarih değişir.</p>
+
+<h2>9. İletişim</h2>
+<p>Soru, silme talebi veya güvenlik bildirimi için:
+<a href="mailto:muhammetaliozturk.ofis@gmail.com">muhammetaliozturk.ofis@gmail.com</a></p>
+
+<hr>
+
+<!-- ===================== ENGLISH ===================== -->
+<h1 lang="en">My Grocery Buddy — Privacy Policy</h1>
+<p class="meta" lang="en">Last updated: 11 August 2026 · Package name: <code>com.marketarkadasim.app</code></p>
+
+<div lang="en">
+<p>This policy explains how <strong>My Grocery Buddy</strong> (published as
+<em>Market Arkadaşım</em> in Turkish) handles your data. The short answer:
+<strong>we cannot read what you write.</strong></p>
+
+<h2>1. No account</h2>
+<p>The app never asks for a <strong>name, email address, phone number or password</strong>.
+There is no sign-up and no login. You pair with another person by scanning a QR code.</p>
+
+<h2>2. End-to-end encryption</h2>
+<p>Your shopping lists, product names, amounts you enter, store names, notes and the
+nicknames you type are <strong>encrypted on your phone before they are sent</strong>
+(XChaCha20-Poly1305).</p>
+<ul>
+  <li>The encryption key is stored <strong>only on your devices</strong>.</li>
+  <li>The key is carried inside the invite QR code or the invite link, and is
+      <strong>never written to the server</strong>.</li>
+  <li>Everything stored on the server is an unreadable encrypted blob.
+      <strong>Nobody — including the developer of this app</strong> — can read it.</li>
+</ul>
+<p><strong>There is no recovery.</strong> If you lose your phone and have no other device
+joined to that space, your data is mathematically unrecoverable. This is a deliberate
+design choice.</p>
+
+<h3>Links you send yourself</h3>
+<p>When you send a shopping list, the list is written into the part of the link that
+follows the <code>#</code> sign. Browsers <strong>never send anything after
+<code>#</code> to a server</strong>, so a list you share <strong>never reaches us</strong>
+or the company hosting the page the link points to. It travels only through the
+messaging app you chose.</p>
+<p><strong>That link is not encrypted.</strong> Encrypting it would mean shipping the
+key inside the very same link — which provides no real protection, only the appearance
+of it. Anyone who obtains the link can read the list; it is exactly as exposed as typing
+the list into a message. The <em>invite</em> link, which carries your space key, is
+different and should only ever be sent to someone you want in your list. Shared links
+stop working after 2 days.</p>
+
+<h2>3. What is stored unencrypted</h2>
+<p>For the app to work, this technical data is stored unencrypted on Google Firebase
+Realtime Database (server region: European Union, <code>europe-west1</code>):</p>
+<ul>
+  <li><strong>Anonymous user ID (uid):</strong> a random number generated by Firebase.
+      It is not linked to your name, email or phone number.</li>
+  <li><strong>Invite code:</strong> which code belongs to which space.</li>
+  <li><strong>Join timestamp</strong> and which ID is a member of which space.</li>
+</ul>
+<p>This does not identify you. It is the skeleton of the app, not its content.</p>
+
+<h2>4. Camera</h2>
+<p>Camera permission is used for exactly one thing: <strong>scanning the invite QR
+code</strong>.</p>
+<ul>
+  <li>The image is <strong>never uploaded</strong> and is never stored anywhere.</li>
+  <li>Your photo gallery is never accessed.</li>
+  <li>No photo is taken or kept.</li>
+</ul>
+
+<h2>5. No ads, no analytics</h2>
+<p>The app contains <strong>no advertising</strong>. It does not read the Advertising ID.
+It uses <strong>no</strong> third-party analytics, tracking or profiling. Your data is
+never sold, rented or shared.</p>
+
+<h2>6. Children</h2>
+<p>The app is not directed at children under 13 and does not knowingly collect data
+from them.</p>
+
+<h2>7. Deleting your data</h2>
+<ul>
+  <li><strong>Uninstall the app.</strong> The encryption key is removed from your phone
+      and any encrypted blobs left on the server become permanently unreadable.</li>
+  <li><strong>Request full erasure.</strong> Email the address below and we will delete
+      all records tied to your anonymous ID. Quoting your in-app space code is enough
+      to identify the records.</li>
+</ul>
+
+<h2>8. Changes</h2>
+<p>If this policy changes, this page is updated and the date above changes.</p>
+
+<h2>9. Contact</h2>
+<p>Questions, deletion requests or security reports:
+<a href="mailto:muhammetaliozturk.ofis@gmail.com">muhammetaliozturk.ofis@gmail.com</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Arkadaşım — gelen liste</title>
+<meta name="robots" content="noindex">
+<!--
+  Bu sayfa yalnızca uygulama KURULU DEĞİLKEN (ya da bağlantı henüz
+  doğrulanmamışken) görünür. Uygulama kuruluysa Android bağlantıyı doğrudan
+  uygulamaya verir ve burası hiç açılmaz.
+
+  Listenin kendisi adresin `#` sonrasındadır ve `#` sonrası tarayıcıdan
+  sunucuya GÖNDERİLMEZ: GitHub bu listeyi hiçbir zaman görmez. Çözme işi
+  tamamen bu sayfadaki JavaScript'te, telefonun içinde olur.
+-->
+<style>
+  :root {
+    --zemin: #F9F6EF; --yuzey: #FFFFFF; --metin: #27211A; --silik: #82786A;
+    --vurgu: #1FA55A; --vurgu-derin: #127C41; --vurgu-zemin: #E2F5E9;
+    --kenar: #EBE5D8; --turuncu: #C2560D;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --zemin: #151210; --yuzey: #201B16; --metin: #F5EFE8; --silik: #A2968A;
+      --vurgu: #3DBE74; --vurgu-derin: #6FDE9C; --vurgu-zemin: #15301F;
+      --kenar: #332B23; --turuncu: #F9A468;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 18px 48px;
+    background: var(--zemin); color: var(--metin);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 460px; margin: 0 auto; }
+  .baslik { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .baslik .logo { font-size: 34px; }
+  .baslik h1 { font-size: 19px; margin: 0; letter-spacing: -0.3px; }
+  .baslik p { margin: 2px 0 0; font-size: 13px; color: var(--silik); }
+  .kart {
+    background: var(--vurgu-zemin); border: 1px solid var(--kenar);
+    border-radius: 22px; padding: 16px 18px; margin-bottom: 16px;
+  }
+  .kart h2 { margin: 0; font-size: 17px; color: var(--vurgu-derin); }
+  .kart p { margin: 2px 0 0; font-size: 13px; color: var(--silik); }
+  ul { list-style: none; margin: 0; padding: 0;
+       background: var(--yuzey); border: 1px solid var(--kenar);
+       border-radius: 22px; overflow: hidden; }
+  li { display: flex; align-items: center; gap: 10px; padding: 12px 18px; }
+  li + li { border-top: 1px solid var(--kenar); }
+  .nokta { width: 7px; height: 7px; border-radius: 50%;
+           background: var(--vurgu); flex: 0 0 auto; }
+  .ad { flex: 1; }
+  .miktar { font-size: 13px; font-weight: 700; color: var(--turuncu); }
+  .indir {
+    display: block; margin-top: 22px; padding: 16px;
+    background: var(--vurgu); color: #FFFFFF; text-align: center;
+    text-decoration: none; font-weight: 700; border-radius: 999px;
+  }
+  .not { margin-top: 18px; font-size: 12px; color: var(--silik); text-align: center; }
+  .hata { text-align: center; padding: 28px 0; }
+  .hata .simge { font-size: 40px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="baslik">
+    <span class="logo">🧺</span>
+    <div>
+      <h1>Market Arkadaşım</h1>
+      <p>Sana bir alışveriş listesi gönderildi</p>
+    </div>
+  </div>
+
+  <div id="icerik"></div>
+
+  <a class="indir" href="https://play.google.com/store/apps/details?id=com.marketarkadasim.app">
+    Uygulamayı indir
+  </a>
+  <p class="not">
+    Uygulamayı kurduktan sonra bu bağlantıya bir daha dokun — liste
+    kendiliğinden telefonuna geçer. Bağlantı gönderildikten 2 gün sonra
+    geçerliliğini yitirir.
+  </p>
+</main>
+
+<script>
+(function () {
+  var icerik = document.getElementById('icerik');
+
+  function hata(mesaj) {
+    icerik.innerHTML =
+      '<div class="hata"><div class="simge">🤷</div><p>' + mesaj + '</p></div>';
+  }
+
+  function coz(kodlanmis) {
+    var s = kodlanmis.replace(/-/g, '+').replace(/_/g, '/');
+    var eksik = s.length % 4;
+    if (eksik) s += '===='.slice(eksik); // 2 kalan → "==", 3 kalan → "="
+    var ikili = atob(s);
+    var baytlar = new Uint8Array(ikili.length);
+    for (var i = 0; i < ikili.length; i++) baytlar[i] = ikili.charCodeAt(i);
+    return new TextDecoder('utf-8').decode(baytlar);
+  }
+
+  function kacir(metin) {
+    var kutu = document.createElement('span');
+    kutu.textContent = metin;
+    return kutu.innerHTML;
+  }
+
+  var parca = (location.hash || '').replace(/^#/, '').trim();
+  if (!parca) {
+    hata('Bu bağlantıda liste yok. Gönderen kişiden bağlantının tamamını iste.');
+    return;
+  }
+
+  var veri;
+  try {
+    veri = JSON.parse(coz(parca));
+  } catch (e) {
+    hata('Bu bağlantıyı okuyamadım — eksik kopyalanmış olabilir.');
+    return;
+  }
+  if (!veri || !Array.isArray(veri.u) || veri.u.length === 0) {
+    hata('Bu bağlantıda liste yok.');
+    return;
+  }
+
+  var GUN = 24 * 60 * 60 * 1000;
+  if (typeof veri.z === 'number' && Date.now() - veri.z > 2 * GUN) {
+    hata('Bu listenin süresi dolmuş. Gönderen kişiden yenisini iste.');
+    return;
+  }
+
+  var gonderen = typeof veri.g === 'string' && veri.g ? veri.g : 'Arkadaşın';
+  var kategori = veri.k && veri.k.a ? veri.k : { a: 'Market', s: '🛒' };
+
+  var html =
+    '<div class="kart"><h2>' + kacir(kategori.s || '🛒') + ' ' +
+    kacir(gonderen) + ' gönderdi</h2><p>' +
+    kacir(kategori.a) + ' · ' + veri.u.length + ' ürün</p></div><ul>';
+
+  veri.u.forEach(function (u) {
+    if (!u || typeof u.a !== 'string') return;
+    var miktar = '';
+    if (typeof u.m === 'number' && isFinite(u.m) && u.m > 0) {
+      var sayi = (u.m % 1 === 0) ? String(u.m) : u.m.toFixed(1).replace('.', ',');
+      miktar = '<span class="miktar">' + sayi +
+        (typeof u.b === 'string' ? ' ' + kacir(u.b) : '') + '</span>';
+    }
+    html += '<li><span class="nokta"></span><span class="ad">' +
+      kacir(u.a) + '</span>' + miktar + '</li>';
+  });
+
+  icerik.innerHTML = html + '</ul>';
+})();
+</script>
+</body>
+</html>
